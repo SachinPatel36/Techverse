@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - Techverse</title>
+  <link rel="stylesheet" href="/FontAwesome/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+      color: #e8edf5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .signup-container {
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      text-decoration: none;
+      margin-bottom: 25px;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .back-link:hover {
+      color: #818cf8;
+      transform: translateX(-5px);
+    }
+
+    .signup-box {
+      background: rgba(30, 30, 46, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 35px 30px;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeUp 0.6s ease-out;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .logo-icon i {
+      font-size: 28px;
+      color: white;
+    }
+
+    .logo-section h1 {
+      font-size: 24px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 5px;
+    }
+
+    .logo-section p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      background: rgba(15, 15, 25, 0.6);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 10px;
+      color: #e8edf5;
+      font-size: 15px;
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: #818cf8;
+      background: rgba(15, 15, 25, 0.8);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-group input:focus + .input-icon {
+      color: #818cf8;
+    }
+
+    .terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 25px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+
+    .terms input[type='checkbox'] {
+      width: 16px;
+      height: 16px;
+      accent-color: #6366f1;
+      margin-top: 2px;
+    }
+
+    .terms a {
+      color: #818cf8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .terms a:hover {
+      color: #a5b4fc;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 25px 0;
+      color: #64748b;
+      font-size: 13px;
+      position: relative;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 35%;
+      height: 1px;
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    .social-login {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .social-btn {
+      padding: 10px;
+      background: rgba(15, 15, 25, 0.6);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 10px;
+      color: #cbd5e1;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background: rgba(15, 15, 25, 0.8);
+      border-color: #818cf8;
+      transform: translateY(-2px);
+    }
+
+    .login-link {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .login-link a {
+      color: #818cf8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .login-link a:hover {
+      color: #a5b4fc;
+    }
+
+    @media (max-width: 480px) {
+      .signup-box {
+        padding: 30px 25px;
+      }
+
+      .logo-section h1 {
+        font-size: 22px;
+      }
+
+      .social-login {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <a href="/Mainpage.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="signup-box">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <i class="fas fa-user-plus"></i>
+        </div>
+        <h1>Create Account</h1>
+        <p>Join Techverse and start your journey</p>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <div class="input-wrapper">
+            <input type="text" id="fullname" placeholder="Sachin Patel" required />
+            <i class="fas fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <input type="email" id="email" placeholder="imsachinptll@gmail.com" required />
+            <i class="fas fa-envelope input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="password" placeholder="Create a password" required />
+            <i class="fas fa-lock input-icon"></i>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password</label>
+          <div class="input-wrapper">
+            <input type="password" id="confirm-password" placeholder="Re-enter your password" required />
+            <i class="fas fa-lock input-icon"></i>
+          </div>
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" required />
+          <span>I agree to the <a href="/T&C.html">Terms & Conditions</a></span>
+        </label>
+
+        <button type="submit" class="signup-btn">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </button>
+      </form>
+
+      <div class="divider">OR SIGN UP WITH</div>
+
+      <div class="social-login">
+        <a href="#" class="social-btn">
+          <i class="fab fa-google"></i> Google
+        </a>
+        <a href="#" class="social-btn">
+          <i class="fab fa-apple"></i> Apple
+        </a>
+      </div>
+
+      <div class="login-link">
+        Already have an account? <a href="/Login.html">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/FontAwesome/js/all.min.js"></script>
+</body>
+</html>

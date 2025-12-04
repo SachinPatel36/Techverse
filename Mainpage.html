@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techverse - Technology Store</title>
+    <link rel="stylesheet" href="/FontAwesome/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e8edf5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #818cf8;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .login-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 8px 20px;
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #818cf8;
+            color: #e8edf5;
+        }
+
+        .cart-link {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 8px 20px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .cart-link:hover {
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #e8edf5, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .filters {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filters input[type="radio"] {
+            display: none;
+        }
+
+        .filters label {
+            padding: 10px 25px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            background: rgba(30, 30, 46, 0.5);
+            color: #cbd5e1;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .filters label:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #818cf8;
+            transform: translateY(-2px);
+        }
+
+        .filters input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-color: #6366f1;
+            color: white;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #818cf8;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: rgba(15, 15, 25, 0.8);
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #818cf8;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #e8edf5;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+
+        .product-description {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+        }
+
+        #all:checked ~ .products-container .product-card {
+            display: block;
+        }
+
+        #laptop:checked ~ .products-container .product-card {
+            display: none;
+        }
+
+        #laptop:checked ~ .products-container .product-card[data-category="laptop"] {
+            display: block;
+        }
+
+        #phone:checked ~ .products-container .product-card {
+            display: none;
+        }
+
+        #phone:checked ~ .products-container .product-card[data-category="phone"] {
+            display: block;
+        }
+
+        #audio:checked ~ .products-container .product-card {
+            display: none;
+        }
+
+        #audio:checked ~ .products-container .product-card[data-category="audio"] {
+            display: block;
+        }
+
+        #accessory:checked ~ .products-container .product-card {
+            display: none;
+        }
+
+        #accessory:checked ~ .products-container .product-card[data-category="accessory"] {
+            display: block;
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #818cf8;
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #818cf8;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #e8edf5;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        footer {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #818cf8;
+        }
+
+        .footer-bottom {
+            color: #64748b;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+                flex: 100%;
+                order: 3;
+                justify-content: center;
+                margin-top: 15px;
+            }
+
+            .nav-actions {
+                gap: 10px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-bolt"></i> Techverse</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#features">Features</a>
+            </div>
+            <div class="nav-actions">
+                <a href="/Login.html" class="login-btn">Login</a>
+                <a href="#cart" class="cart-link"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Premium Technology Products</h1>
+        <p>Discover the latest in technology with our curated collection</p>
+    </section>
+
+    <input type="radio" name="filter" id="all" checked>
+    <input type="radio" name="filter" id="laptop">
+    <input type="radio" name="filter" id="phone">
+    <input type="radio" name="filter" id="audio">
+    <input type="radio" name="filter" id="accessory">
+
+    <div class="filters">
+        <label for="all">All Products</label>
+        <label for="laptop">Laptops</label>
+        <label for="phone">Smartphones</label>
+        <label for="audio">Audio</label>
+        <label for="accessory">Accessories</label>
+    </div>
+
+    <div class="products-container" id="products">
+        <div class="products-grid">
+            <div class="product-card" data-category="laptop">
+                <div class="product-image">
+                    <img src="/img/photo-1517336714731-489689fd1ca8.jpg" alt="MacBook Pro">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <div class="product-name">MacBook Pro 16"<span class="badge">Popular</span></div>
+                    <div class="product-description">M3 Max chip, 36GB RAM, 1TB SSD</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹2,49,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="laptop">
+                <div class="product-image">
+                    <img src="/img/photo-1593642632823-8f785ba67e45.jpg" alt="Dell XPS">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <div class="product-name">Dell XPS 15</div>
+                    <div class="product-description">Intel i9, 32GB RAM, RTX 4060</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹1,89,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="laptop">
+                <div class="product-image">
+                    <img src="/img/photo-1588872657578-7efd1f1555ed.jpg" alt="ThinkPad">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Laptop</div>
+                    <div class="product-name">ThinkPad X1 Carbon</div>
+                    <div class="product-description">Intel i7, 16GB RAM, 512GB SSD</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹1,64,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="phone">
+                <div class="product-image">
+                    <img src="/img/photo-1695048133142-1a20484d2569.jpg" alt="iPhone 15 Pro">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Smartphone</div>
+                    <div class="product-name">iPhone 15 Pro Max<span class="badge">New</span></div>
+                    <div class="product-description">A17 Pro chip, 256GB, Titanium</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹1,19,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="phone">
+                <div class="product-image">
+                    <img src="/img/photo-1610945415295-d9bbf067e59c.jpg" alt="Samsung Galaxy">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Smartphone</div>
+                    <div class="product-name">Samsung Galaxy S24 Ultra</div>
+                    <div class="product-description">Snapdragon 8 Gen 3, 512GB</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹1,29,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="phone">
+                <div class="product-image">
+                    <img src="/img/Google-Pixel-8-Pro.avif" alt="Google Pixel">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Smartphone</div>
+                    <div class="product-name">Google Pixel 8 Pro</div>
+                    <div class="product-description">Google Tensor G3, 256GB</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹99,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="audio">
+                <div class="product-image">
+                    <img src="/img/AirPods Max.webp" alt="AirPods Max">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Audio</div>
+                    <div class="product-name">AirPods Max</div>
+                    <div class="product-description">Premium over-ear headphones</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹54,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="audio">
+                <div class="product-image">
+                    <img src="/img/Sony Headphones.jpg" alt="Sony Headphones">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Audio</div>
+                    <div class="product-name">Sony WH-1000XM5<span class="badge">Best Seller</span></div>
+                    <div class="product-description">Industry-leading noise cancellation</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹39,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="audio">
+                <div class="product-image">
+                    <img src="/img/photo-1484704849700-f032a568e944.jpg" alt="Bose Headphones">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Audio</div>
+                    <div class="product-name">Bose QuietComfort Ultra</div>
+                    <div class="product-description">Spatial audio, premium comfort</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹42,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory">
+                <div class="product-image">
+                    <img src="/img/photo-1587829741301-dc798b83add3.jpg" alt="Keyboard">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessory</div>
+                    <div class="product-name">Magic Keyboard</div>
+                    <div class="product-description">Wireless with numeric keypad</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹34,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory">
+                <div class="product-image">
+                    <img src="/img/photo-1527814050087-3793815479db.jpg" alt="Mouse">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessory</div>
+                    <div class="product-name">Logitech MX Master 3S</div>
+                    <div class="product-description">Premium wireless mouse</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹9,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="accessory">
+                <div class="product-image">
+                    <img src="/img/photo-1625948515291-69613efd103f.jpg" alt="USB Hub">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessory</div>
+                    <div class="product-name">USB-C Hub Pro</div>
+                    <div class="product-description">11-in-1 multiport adapter</div>
+                    <div class="product-footer">
+                        <div class="product-price">₹7,999</div>
+                        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="features" id="features">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+            <div class="feature-title">Free Shipping</div>
+            <div class="feature-description">Free delivery on orders over ₹10,000</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+            <div class="feature-title">Secure Payment</div>
+            <div class="feature-description">100% secure payment with SSL</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
+            <div class="feature-title">Easy Returns</div>
+            <div class="feature-description">30-day money back guarantee</div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-headset"></i></div>
+            <div class="feature-title">24/7 Support</div>
+            <div class="feature-description">Dedicated customer support</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/AboutUs.html">About Us</a>
+                <a href="/PrivacyPolicy.html">Privacy Policy</a>
+                <a href="/T&C.html">Terms & Conditions</a>
+                <a href="/ShippingInfo.html">Shipping Info</a>
+                <a href="/Returns.html">Returns</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Techverse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/FontAwesome/js/all.min.js"></script>
+</body>
+</html>

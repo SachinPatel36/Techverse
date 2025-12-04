@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns Policy - Techverse</title>
+    <link rel="stylesheet" href="/FontAwesome/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e8edf5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #818cf8;
+            color: #e8edf5;
+            transform: translateX(-3px);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            margin-bottom: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #e8edf5, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            color: #94a3b8;
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .content-box {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .content-box h2 {
+            font-size: 32px;
+            color: #818cf8;
+            margin-bottom: 20px;
+        }
+
+        .content-box h3 {
+            font-size: 22px;
+            color: #e8edf5;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .content-box p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .content-box ul {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .content-box li {
+            margin-bottom: 8px;
+        }
+
+        .icon-box {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .icon-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .highlight-section h2 {
+            font-size: 36px;
+            color: #818cf8;
+            margin-bottom: 20px;
+        }
+
+        .highlight-section p {
+            color: #cbd5e1;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-bottom {
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .content-section {
+                grid-template-columns: 1fr;
+            }
+
+            .icon-box {
+                order: -1;
+                min-height: 200px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-bolt"></i> Techverse</div>
+            <a href="/Mainpage.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <h1>Returns & Refunds</h1>
+        <p>Easy returns with our 30-day money back guarantee</p>
+    </div>
+
+    <div class="container">
+        <div class="content-section">
+            <div class="content-box">
+                <h2>Our Return Policy</h2>
+                <p>At Techverse, we want you to be completely satisfied with your purchase. If you're not happy with your product, we offer a hassle-free 30-day return policy on most items.</p>
+                <h3>Eligible Items</h3>
+                <ul>
+                    <li>Laptops and computers</li>
+                    <li>Smartphones and tablets</li>
+                    <li>Audio equipment (headphones, earbuds, speakers)</li>
+                    <li>Accessories (keyboards, mice, hubs, cables)</li>
+                    <li>All other tech products sold on our platform</li>
+                </ul>
+                <h3>Return Conditions</h3>
+                <ul>
+                    <li>Product must be in original condition with all accessories</li>
+                    <li>Original packaging must be intact and undamaged</li>
+                    <li>All tags, labels, and protective films must be present</li>
+                    <li>No physical damage or signs of use</li>
+                    <li>Return initiated within 30 days of delivery</li>
+                </ul>
+            </div>
+            <div class="icon-box">
+                <img src="/img/f77f3ece48280275a3cba2592706bac9.jpg" alt="Return Policy Image">
+            </div>
+        </div>
+
+        <div class="highlight-section">
+            <h2>30-Day Money Back Guarantee</h2>
+            <p>Return any product within 30 days of delivery for a full refund, no questions asked. We believe in the quality of our products and stand behind every purchase you make.</p>
+        </div>
+
+        <div class="content-section">
+            <div class="icon-box">
+                <img src="/img/d111c020e3a25a9d5ce931503966b9b2.jpg" alt="Refund Process Image">
+            </div>
+            <div class="content-box">
+                <h2>Refund Process</h2>
+                <p>Once we receive your returned item, we'll inspect it and process your refund quickly and efficiently.</p>
+                <h3>Timeline</h3>
+                <ul>
+                    <li>Inspection: 2-3 business days after receiving the item</li>
+                    <li>Refund initiation: 1-2 business days after approval</li>
+                    <li>Credit to your account: 5-7 business days depending on your bank</li>
+                </ul>
+                <h3>Refund Method</h3>
+                <p>Refunds will be issued to the original payment method used for the purchase.</p>
+                <ul>
+                    <li>Credit/Debit Card: Refund to the same card</li>
+                    <li>UPI/Net Banking: Refund to your bank account</li>
+                    <li>Cash on Delivery: Bank transfer refund</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-box">
+                <h2>Non-Returnable Items</h2>
+                <p>For hygiene and safety reasons, the following items cannot be returned:</p>
+                <ul>
+                    <li>Opened software or digital products</li>
+                    <li>Products with tampered serial numbers</li>
+                    <li>Items marked as final sale or clearance</li>
+                    <li>Gift cards and vouchers</li>
+                    <li>Downloaded software or digital content</li>
+                </ul>
+                <h3>Exchanges</h3>
+                <p>We currently don't offer direct exchanges. If you need a different product, please return the original item for a refund and place a new order for the item you want.</p>
+            </div>
+            <div class="icon-box">
+                <img src="/img/98b96c47f5a84f35e5a24fcee9852add.jpg" alt="Non-Returnable Items Image">
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="icon-box">
+                <img src="/img/29f47ae50f5d6580cea1615dc4a52177.jpg" alt="Customer Support Image">
+            </div>
+            <div class="content-box">
+                <h2>Need Help?</h2>
+                <p>Our customer support team is here to assist you 24/7 with any questions or concerns about your return.</p>
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>Email: returns@techverse.com</li>
+                    <li>Phone: +91 9913444919</li>
+                    <li>Hours: 24/7 Support Available</li>
+                </ul>
+                <p>We're committed to making your return experience as smooth and hassle-free as possible. Don't hesitate to reach out if you need any assistance.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Techverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/FontAwesome/js/all.min.js"></script>
+</body>
+</html>

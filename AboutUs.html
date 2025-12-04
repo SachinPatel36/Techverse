@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Techverse</title>
+    <link rel="stylesheet" href="/FontAwesome/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            color: #e8edf5;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(10, 10, 20, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 20px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #818cf8;
+            color: #e8edf5;
+            transform: translateX(-3px);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            margin-bottom: 50px;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #e8edf5, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            color: #94a3b8;
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .story-content {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .story-content h2 {
+            font-size: 32px;
+            color: #818cf8;
+            margin-bottom: 20px;
+        }
+
+        .story-content p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .story-image {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            background-image: url(/img/IT\ Office.png);
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .values-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #818cf8;
+            margin-bottom: 40px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .value-card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            border-color: #818cf8;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .value-icon i {
+            font-size: 36px;
+            color: #818cf8;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            color: #e8edf5;
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 50px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 48px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        .team-section {
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: rgba(30, 30, 46, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: #818cf8;
+            box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .team-avatar i {
+            font-size: 48px;
+            color: white;
+        }
+
+        .team-card h3 {
+            font-size: 20px;
+            color: #e8edf5;
+            margin-bottom: 8px;
+        }
+
+        .team-card .role {
+            color: #818cf8;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .team-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .mission-section h2 {
+            font-size: 36px;
+            color: #818cf8;
+            margin-bottom: 20px;
+        }
+
+        .mission-section p {
+            color: #cbd5e1;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: rgba(10, 10, 20, 0.8);
+            padding: 30px 20px;
+            margin-top: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-bottom {
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                order: -1;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .stats-section {
+                padding: 30px 20px;
+            }
+
+            .stat-item h4 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><i class="fas fa-bolt"></i> Techverse</div>
+            <a href="/Mainpage.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <div class="hero-section">
+        <h1>About Techverse</h1>
+        <p>Pioneering the future of technology retail with premium products and exceptional service</p>
+    </div>
+
+    <div class="container">
+        <div class="story-section">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>Founded in 2020, Techverse emerged from a simple vision: to make cutting-edge technology accessible to everyone. What started as a small online store has grown into a trusted destination for tech enthusiasts across India.</p>
+                <p>We believe technology should empower, inspire, and connect people. That's why we carefully curate every product in our catalog, ensuring it meets our high standards for quality, innovation, and value.</p>
+                <p>Today, we serve thousands of customers, offering everything from premium laptops to the latest smartphones, backed by exceptional customer service and support.</p>
+            </div>
+            <div class="story-image">
+            </div>
+        </div>
+
+        <div class="mission-section">
+            <h2>Our Mission</h2>
+            <p>To deliver premium technology products with unmatched service, making innovation accessible and empowering our customers to achieve more through technology.</p>
+        </div>
+
+        <div class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>50K+</h4>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h4>1000+</h4>
+                    <p>Products</p>
+                </div>
+                <div class="stat-item">
+                    <h4>98%</h4>
+                    <p>Satisfaction Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Quality First</h3>
+                    <p>We partner with leading brands and thoroughly test every product to ensure it meets our premium standards.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Focused</h3>
+                    <p>Your satisfaction is our priority. We go above and beyond to provide exceptional service and support.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation Driven</h3>
+                    <p>We stay ahead of technology trends to bring you the latest and most innovative products on the market.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Trust & Security</h3>
+                    <p>Your data and transactions are protected with industry-leading security measures and encryption.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2 class="section-title">Meet Our Leadership</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Rajesh Kumar</h3>
+                    <div class="role">Founder & CEO</div>
+                    <p>Visionary leader with 15 years of experience in technology and e-commerce, driving innovation and growth.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Priya Sharma</h3>
+                    <div class="role">Chief Technology Officer</div>
+                    <p>Tech expert passionate about creating seamless digital experiences and implementing cutting-edge solutions.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Amit Patel</h3>
+                    <div class="role">Head of Operations</div>
+                    <p>Logistics specialist ensuring smooth operations and timely delivery of every order across the country.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Neha Desai</h3>
+                    <div class="role">Customer Experience Lead</div>
+                    <p>Dedicated to ensuring every customer interaction exceeds expectations and builds lasting relationships.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="story-section">
+            <div class="story-image">
+            </div>
+            <div class="story-content">
+                <h2>Why Choose Us</h2>
+                <p>At Techverse, we're more than just an online store. We're your trusted technology partner, committed to helping you find the perfect products for your needs.</p>
+                <p>Our expert team carefully selects each product, ensuring authenticity and quality. We offer competitive pricing, fast shipping, and hassle-free returns because we believe shopping for technology should be exciting, not stressful.</p>
+                <p>With 24/7 customer support and a community of tech enthusiasts, you're never alone on your technology journey. Join thousands of satisfied customers who trust Techverse for all their tech needs.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Techverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/FontAwesome/js/all.min.js"></script>
+</body>
+</html>
